@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рецепт {{ title }}</title>
+</head>
+<body>
+    <h1>Рецепт {{ title }}</h1>
+
+    <h3>Укажите желаемое количество порций</h3>
+    <form method="get">
+        <input type="text" name="servings">
+        <input type="submit" value="Расчитать">
+    </form>
+
+    {% if servings %}
+        <p>Количество ингредентов на {{ servings }} порции</p>
+    {% else %}
+        <p>Количество ингредентов на одну порцию</p>
+    {% endif %}
+
+    {% for ingredient, amount in recipe.items %}
+        <ul>
+            <lo>{{ ingredient }}: {{ amount }}</lo>
+        </ul>
+    {% empty %}
+        <p>Такого рецепта не знаю :(</p>
+    {% endfor %}
+
+    <a href="/">Вернуться к списку рецептов -></a>
+</body>
+</html>
